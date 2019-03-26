@@ -4,6 +4,10 @@ import Vue from 'vue'
 import mandmobile from 'mand-mobile'
 import 'mand-mobile/lib/mand-mobile.css'
 
+// 引入axios
+import axios from 'axios'
+
+
 import App from './App.vue'
 // 引入路由插件
 import VueRouter from 'vue-router'
@@ -11,6 +15,7 @@ import VueRouter from 'vue-router'
 // 使用插件
 Vue.use(mandmobile)
 Vue.use(VueRouter)
+
 
 // 引入组件
 import Index from './components/Index.vue'
@@ -30,6 +35,7 @@ const routes=[
 
 
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios
 
 
 

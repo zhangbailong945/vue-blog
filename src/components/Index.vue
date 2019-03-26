@@ -1,6 +1,6 @@
-<template>
+<template v-for="p in plist">
   <div class="index-list">
-    <h3><a href="#">笔记标题 谁谁谁笔记标题</a></h3>
+    <h3><a href="#">{{ p.title }}</a></h3>
     <div class="index-list-post">
       <a href="#"><img src="../assets/logo.png" /></a>
       <div class="index-list-content">
@@ -15,17 +15,13 @@
       <span>浏览1888</span>
       <span>评论1888</span>
     </div>
-    <p>
-      {{ info }}
-    </p>
   </div>
 </template>
 <script>
 export default {
   data: function() {
     return {
-      list: [],
-      info: null
+      list:[]
     };
   },
   methods: {
@@ -33,12 +29,8 @@ export default {
       var url = "/api/api/post/";
       this.$axios
         .get(url)
-        .then(function(response) {
-          this.info = response;
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
+        .then(response=>(this.list=JSON.parse(response.data)))
+        .catch(error=>(console.log(error)))
     }
   },
   mounted() {

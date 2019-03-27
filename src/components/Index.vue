@@ -1,19 +1,25 @@
-<template v-for="p in plist">
-  <div class="index-list">
-    <h3><a href="#">{{ p.title }}</a></h3>
-    <div class="index-list-post">
-      <a href="#"><img src="../assets/logo.png" /></a>
-      <div class="index-list-content">
-        召开了14年秋季拍立得新品发布会，发布了两款全新的拍立得新品及五款特别款新品
-        召开了14年秋季拍立得新品发布会，发布了两款全新的拍款全新的拍全新的拍新的拍
-        的拍......[<a href="#">详情</a>]
+<template>
+  <div>
+    <div
+      class="index-list"
+      v-for="(value,key) in plist"
+      :key="key"
+    >
+      <h3><a href="#">{{ value.title }}</a></h3>
+      <div class="index-list-post">
+        <a href="#"><img src="../assets/logo.png" /></a>
+        <div class="index-list-content">
+          召开了14年秋季拍立得新品发布会，发布了两款全新的拍立得新品及五款特别款新品
+          召开了14年秋季拍立得新品发布会，发布了两款全新的拍款全新的拍全新的拍新的拍
+          的拍......[<a href="#">详情</a>]
+        </div>
       </div>
-    </div>
-    <div class="index-list-footer">
-      <span>python</span>
-      <span>2019-3-26 11:42:59</span>
-      <span>浏览1888</span>
-      <span>评论1888</span>
+      <div class="index-list-footer">
+        <span>python</span>
+        <span>2019-3-26 11:42:59</span>
+        <span>浏览1888</span>
+        <span>评论1888</span>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +27,7 @@
 export default {
   data: function() {
     return {
-      list:[]
+      plist: []
     };
   },
   methods: {
@@ -29,8 +35,12 @@ export default {
       var url = "/api/api/post/";
       this.$axios
         .get(url)
-        .then(response=>(this.list=JSON.parse(response.data)))
-        .catch(error=>(console.log(error)))
+        .then(response => {
+          this.plist = response.data;
+        })
+        .catch(error => {
+          window.console.log(error);
+        });
     }
   },
   mounted() {

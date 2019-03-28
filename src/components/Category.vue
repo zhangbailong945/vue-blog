@@ -50,7 +50,7 @@ export default {
         
         if(this.index<maxLen)
         {
-            this.showList=this.list[0,this.index]
+            this.showList=this.list.slice(0, this.index);
             this.index+=5
         }
         
@@ -66,9 +66,14 @@ export default {
       this.$axios
         .get(url)
         .then(response => {
-          this.list = response.data
-          this.showList=this.list
-          
+          this.list = response.data;
+          if(this.index<this.list.length-1)
+          {
+              this.showList=this.list.slice(0,this.index)
+          }
+          else{
+            this.showList=this.list
+          }
         })
         .catch(error => {
           window.console.log(error);

@@ -1,0 +1,92 @@
+<template>
+    <md-water-mark
+      class="text-container"
+      content="loachblog.com"
+      spacing="10vw"
+      opacity="0.2"
+    >
+    <article
+    v-for="(value,key) in tagList"
+    :key="key"
+    >
+    <header class="post-head">
+        <h1 class="post-title">
+            {{ value.title }}
+        </h1>
+        <section class="post-meta">
+            <span class='author'>作者：
+                <a href="/about/">{{ value.username}}</a>
+            </span>
+            <span class='author'>分类：
+                <a href="/category/9/">{{ value.cname }}</a>
+            </span>
+            <time class='post-date' datetime='2018年10月15日 14:26' title=''>{{ value.crated_time }}</time>
+            <span>阅读:
+                <a href="#">{{ value.views }}次</a>
+            </span>
+        </section>
+    </header>
+    <section class="post-content">
+     <p v-html="value.content"></p>
+    </section>
+    <footer>
+        <div
+          class="md-example-child md-example-child-tag md-example-child-tag-2"
+          v-for="(value,key) in value.tags"
+          :key="key"
+        >
+          <tag
+            size="small"
+            shape="square"
+            v-bind:font-color="getRandomColor()"
+            type="ghost"
+          >{{ value.name }}</tag>
+        </div>
+    </footer>
+    </article>
+    </md-water-mark>
+</template>
+
+<script>
+import { WaterMark, Tag} from "mand-mobile";
+export default {
+    data:function(){
+        return {
+            tagList:[],
+            postObj:{}
+        }
+    },
+    components:{
+        [WaterMark.name]: WaterMark,
+        Tag
+    },
+    methods:{
+       getPostById(){
+           var id=this.$route.query.id
+           var url = "/api/api/post/?id="+id;
+           this.$axios
+            .get(url)
+            .then(response => {
+                this.list = response.data;
+                this.tagList=this.list
+                if(this.list.length==1){
+                    this.postObj=this.list[0]
+                }
+            })
+            .catch(error => {
+            window.console.log(error);
+            });
+       },
+       getRandomColor() {
+       var r = Math.round(Math.random() * 255),
+        g = Math.round(Math.random() * 255),
+        b = Math.round(Math.random() * 255);
+       var color = (r << 16) | (g << 8) | b;
+       return "#" + color.toString(16);
+       }
+    },
+    mounted(){
+        this.getPostById()
+    }
+}
+</script>

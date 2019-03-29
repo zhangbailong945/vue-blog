@@ -18,18 +18,15 @@
         >
           <h3><a href="#">{{ value.title }}</a></h3>
           <div class="index-list-post">
-            <a href="#"><img src="../assets/logo.png" /></a>
+            <a href="#"><img v-bind:src="value.post_img" /></a>
             <div class="index-list-content">
-              召开了14年秋季拍立得新品发布会，发布了两款全新的拍立得新品及五款特别款新品
-              召开了14年秋季拍立得新品发布会，发布了两款全新的拍款全新的拍全新的拍新的拍
-              的拍......[<a href="#">详情</a>]
+              <p v-html="value.content"></p>......[<router-link :to="{ path:'/post',query:{id:value.id}}">详情</router-link>]
             </div>
           </div>
           <div class="index-list-footer">
-            <span>python</span>
-            <span>2019-3-26 11:42:59</span>
-            <span>浏览1888</span>
-            <span>评论1888</span>
+            <span>{{ value.cname }}</span>
+            <span>{{ value.created_time }}</span>
+            <span>浏览 {{ value.views }}</span>
           </div>
         </div>
         <md-scroll-view-more

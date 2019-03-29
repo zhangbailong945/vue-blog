@@ -22,6 +22,7 @@ import Index from './components/Index.vue'
 import Category from './components/Category.vue'
 import Tags from './components/Tags.vue'
 import About from './components/About.vue'
+import Post from './components/Post.vue'
 
 // 组件绑定路由
 
@@ -29,7 +30,8 @@ const routes=[
   {path:'/index',component:Index},
   {path:'/category',component:Category},
   {path:'/tags',component:Tags},
-  {path:'/about',component:About}
+  {path:'/about',component:About},
+  {path:'/post',component:Post}
 ]
 
 

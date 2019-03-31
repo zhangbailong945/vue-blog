@@ -10,7 +10,7 @@
         :key="key"
         class="scroll-view-list"
       >
-        <p class="scroll-view-item">{{ value.name }}</p>
+        <router-link :to="{ path:'/post',query:{cid:value.id}}"><p class="scroll-view-item">{{ value.name }}</p></router-link>
       </div>
       <md-scroll-view-more
         slot="more"
@@ -98,4 +98,8 @@ export default {
     font-size 32px
     font-family DINAlternate-Bold
     border-bottom .5px solid #efefef
+
+.md-example-child-scroll-view-3 a:link 
+  text-decoration none
+
 </style>

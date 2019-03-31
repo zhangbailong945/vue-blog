@@ -16,9 +16,9 @@
           v-for="(value,key) in showList"
           :key="key"
         >
-          <h3><a href="#">{{ value.title }}</a></h3>
+          <h3><router-link :to="{ path:'/post',query:{id:value.id}}">{{ value.title }}</router-link></h3>
           <div class="index-list-post">
-            <a href="#"><img v-bind:src="value.post_img" /></a>
+            <router-link :to="{ path:'/post',query:{id:value.id}}"><img v-bind:src="value.post_img" /></router-link>
             <div class="index-list-content">
               <p v-html="value.content"></p>......[<router-link :to="{ path:'/post',query:{id:value.id}}">详情</router-link>]
             </div>

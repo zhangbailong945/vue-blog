@@ -14,10 +14,10 @@
             {{ value.title }}
         </h1>
         <section class="post-meta">
-            <span class='author'>作者：
+            <span class='author'>作者:
                 <a href="/about/">{{ value.username}}</a>
             </span>
-            <span class='author'>分类：
+            <span class='author'>分类:
                 <a href="/category/9/">{{ value.cname }}</a>
             </span>
             <time class='post-date' datetime='2018年10月15日 14:26' title=''>{{ value.crated_time }}</time>
@@ -29,7 +29,10 @@
     <section class="post-content">
      <p v-html="value.content"></p>
     </section>
-    <footer>
+    <footer class="post-footer">
+        <div class="post-tag">
+            标签：
+        </div>
         <div
           class="md-example-child md-example-child-tag md-example-child-tag-2"
           v-for="(value,key) in value.tags"
@@ -48,7 +51,7 @@
 </template>
 
 <script>
-import { WaterMark, Tag} from "mand-mobile";
+import { WaterMark, Tag,Icon} from "mand-mobile";
 export default {
     data:function(){
         return {
@@ -58,6 +61,7 @@ export default {
     },
     components:{
         [WaterMark.name]: WaterMark,
+        [Icon.name]:Icon,
         Tag
     },
     methods:{
@@ -90,3 +94,20 @@ export default {
     }
 }
 </script>
+<style lang="stylus">
+.post-meta a:link 
+    text-decoration none
+    margin-right 2px
+.post-footer
+    margin-top: 30px;
+    border-top: 1px solid #ebebeb;
+    padding: 10px 0 0;
+    .post-tag
+        float:left
+        margin-top:5px
+        font-size:28px
+        line-height:28px 
+    .md-example-child-tag-2
+        float:left
+</style>
+

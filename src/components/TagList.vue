@@ -37,7 +37,7 @@
         </md-scroll-view-more>
       </md-scroll-view>
     </md-water-mark>
-    <p class="nolist" v-else><strong>博主太懒，什么也没留下！</strong></p>
+    <p class="nolist" v-else><strong>没有找到 <font color='red'>{{ this.$route.query.tname }} </font>相关笔记!</strong></p>
   </div>
 </template>
 <script>
@@ -77,7 +77,8 @@ export default {
       }, 1000);
     },
     getPostList() {
-      var url = "/api/api/post/";
+      var tname=this.$route.query.tname
+      var url = "/api/api/post/?tags__name="+tname;
       this.$axios
         .get(url)
         .then(response => {

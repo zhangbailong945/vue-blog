@@ -4,13 +4,14 @@
       ref="scrollView"
       :scrolling-x="false"
       @endReached="$_onEndReached"
+      v-if="showList.length"
     >
       <div
         v-for="(value,key) in showList"
         :key="key"
         class="scroll-view-list"
       >
-        <router-link :to="{ path:'/post',query:{cid:value.id}}"><p class="scroll-view-item">{{ value.name }}</p></router-link>
+        <router-link :to="{ path:'/categorylist',query:{cname:value.name}}"><p class="scroll-view-item">{{ value.name }}</p></router-link>
       </div>
       <md-scroll-view-more
         slot="more"
@@ -18,6 +19,7 @@
       >
       </md-scroll-view-more>
     </md-scroll-view>
+    <p class="nolist" v-else><strong>博主太懒，什么也没留下</strong></p>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   data() {
     return {
       list: [],
-      showList:[],
+      showList:this.getCategoryList(),
       index:5,
       isFinished: false,
     }
@@ -89,6 +91,8 @@ export default {
 </script>
 
 <style lang="stylus">
+.nolist 
+  text-align center
 .md-example-child-scroll-view-3
   height 800px
   background #FFF

@@ -23,6 +23,8 @@ import Category from './components/Category.vue'
 import Tags from './components/Tags.vue'
 import About from './components/About.vue'
 import Post from './components/Post.vue'
+import CategoryList from './components/CategoryList.vue'
+import TagList from './components/TagList.vue'
 
 // 组件绑定路由
 
@@ -31,7 +33,9 @@ const routes=[
   {path:'/category',component:Category},
   {path:'/tags',component:Tags},
   {path:'/about',component:About},
-  {path:'/post',component:Post}
+  {path:'/post',component:Post},
+  {path:'/categorylist',component:CategoryList},
+  {path:'/taglist',component:TagList}
 ]
 
 

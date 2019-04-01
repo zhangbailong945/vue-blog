@@ -37,7 +37,7 @@
         </md-scroll-view-more>
       </md-scroll-view>
     </md-water-mark>
-    <p class="nolist" v-else><strong>博主太懒，什么也没留下！</strong></p>
+    <p class="nolist" v-else><strong>没有找到 <font color='red'>{{ this.$route.query.cname }} </font>相关笔记!</strong></p>
   </div>
 </template>
 <script>
@@ -46,7 +46,7 @@ import { ScrollView, ScrollViewMore } from "mand-mobile";
 export default {
   data: function() {
     return {
-      list: [],
+      list:this.getPostList(),
       showList:this.getPostList(),
       index:5,
       isFinished: false
@@ -77,7 +77,8 @@ export default {
       }, 1000);
     },
     getPostList() {
-      var url = "/api/api/post/";
+      var cname=this.$route.query.cname
+      var url = "/api/api/post/?category__name="+cname;
       this.$axios
         .get(url)
         .then(response => {

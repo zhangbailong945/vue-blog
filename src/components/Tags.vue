@@ -5,6 +5,7 @@
       content="loachblog.com"
       spacing="10vw"
       opacity="0.2"
+      v-if="showList.length"
     >
       <md-scroll-view
         ref="scrollView"
@@ -16,12 +17,14 @@
           v-for="(value,key) in showList"
           :key="key"
         >
+          <router-link :to="{path:'/taglist',query:{tname:value.name}}">
           <tag
             size="small"
             shape="square"
             v-bind:font-color="getRandomColor()"
             type="ghost"
           >{{ value.name }}</tag>
+          </router-link>
         </div>
         <md-scroll-view-more
           slot="more"
@@ -30,6 +33,7 @@
         </md-scroll-view-more>
       </md-scroll-view>
     </md-water-mark>
+    <p class="nolist" v-else><strong>博主太懒，什么也没留下！</strong></p>
   </div>
 </template>
 
@@ -39,8 +43,8 @@ import { WaterMark, Tag, ScrollView, ScrollViewMore } from "mand-mobile";
 export default {
   data: function() {
     return {
-      list: [],
-      showList: [],
+      list:[],
+      showList:this.getTagList(),
       index: 40,
       isFinished: false
     };

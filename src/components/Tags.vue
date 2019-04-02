@@ -5,7 +5,7 @@
       content="loachblog.com"
       spacing="10vw"
       opacity="0.2"
-      v-if="showList.length"
+      v-if="showList!==undefined && showList.length>0"
     >
       <md-scroll-view
         ref="scrollView"

@@ -38,12 +38,26 @@
           v-for="(value,key) in value.tags"
           :key="key"
         >
+         <router-link :to="{path:'/taglist',query:{tname:value.name}}">  
           <tag
             size="small"
             shape="square"
             v-bind:font-color="getRandomColor()"
             type="ghost"
           >{{ value.name }}</tag>
+        </router-link>
+        </div>
+        
+        <div
+          class="md-example-child md-example-child-tag md-example-child-tag-2"
+        >
+        <router-link :to="{path:'/tags'}">
+          <tag
+            size="small"
+            shape="square"
+            font-color="black"
+            type="ghost"
+          >更多</tag></router-link>
         </div>
     </footer>
     </article>

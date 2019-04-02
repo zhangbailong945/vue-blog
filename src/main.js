@@ -29,13 +29,15 @@ import TagList from './components/TagList.vue'
 // 组件绑定路由
 
 const routes=[
+  {path:'/',redirect:'index'},
   {path:'/index',component:Index},
   {path:'/category',component:Category},
   {path:'/tags',component:Tags},
   {path:'/about',component:About},
   {path:'/post',component:Post},
   {path:'/categorylist',component:CategoryList},
-  {path:'/taglist',component:TagList}
+  {path:'/taglist',component:TagList},
+  {path:'*',redirect:'/'}
 ]
 
 

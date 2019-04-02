@@ -4,7 +4,7 @@
       ref="scrollView"
       :scrolling-x="false"
       @endReached="$_onEndReached"
-      v-if="showList.length"
+      v-if="showList!==undefined && showList.length>0"
     >
       <div
         v-for="(value,key) in showList"

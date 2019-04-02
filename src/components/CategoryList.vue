@@ -5,7 +5,7 @@
       content="loachblog.com"
       spacing="10vw"
       opacity="0.2"
-      v-if="showList.length"
+      v-if="showList!==undefined && showList.length>0"
     >
       <md-scroll-view
         ref="scrollView"
@@ -21,11 +21,11 @@
           <div class="index-list-post">
             <router-link :to="{ path:'/post',query:{id:value.id}}"><img v-bind:src="value.post_img" /></router-link>
             <div class="index-list-content">
-              <p v-html="value.content"></p>......[<router-link :to="{ path:'/post',query:{id:value.id}}">详情</router-link>]
+              <p v-html="value.excerpt"></p>......[<router-link :to="{ path:'/post',query:{id:value.id}}">详情</router-link>]
             </div>
           </div>
           <div class="index-list-footer">
-            <span>{{ value.cname }}</span>
+            <span><router-link :to="{ path:'/categorylist',query:{cname:value.cname}}">{{ value.cname }}</router-link></span>
             <span>{{ value.created_time }}</span>
             <span>浏览 {{ value.views }}</span>
           </div>

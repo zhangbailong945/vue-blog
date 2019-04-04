@@ -78,7 +78,7 @@ export default {
     },
     getPostList() {
       var tname=this.$route.query.tname
-      var url = "/api/api/post/?tags__name="+tname;
+      var url = this.$API_HOST+"post/?tags__name="+tname;
       this.$axios
         .get(url)
         .then(response => {

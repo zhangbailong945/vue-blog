@@ -64,7 +64,7 @@ export default {
       }, 1000)
     },
     getCategoryList() {
-      var url = "/api/api/category/";
+      var url = this.$API_HOST+"category/";
       this.$axios
         .get(url)
         .then(response => {

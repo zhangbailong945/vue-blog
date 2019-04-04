@@ -83,7 +83,7 @@ export default {
       }, 1000);
     },
     getPostList() {
-      var url = "/api/api/post/";
+      var url = this.$API_HOST+"post/";
       this.$axios
         .get(url)
         .then(response => {

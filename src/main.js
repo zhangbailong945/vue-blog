@@ -17,6 +17,7 @@ Vue.use(mandmobile)
 Vue.use(VueRouter)
 
 
+
 // 引入组件
 import Index from './components/Index.vue'
 import Category from './components/Category.vue'
@@ -25,6 +26,9 @@ import About from './components/About.vue'
 import Post from './components/Post.vue'
 import CategoryList from './components/CategoryList.vue'
 import TagList from './components/TagList.vue'
+
+// 定义全局变量 API请求地址
+Vue.prototype.$API_HOST='https://loachblog.com/api/'
 
 // 组件绑定路由
 

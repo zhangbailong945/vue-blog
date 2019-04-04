@@ -78,7 +78,7 @@ export default {
     },
     getPostList() {
       var cname=this.$route.query.cname
-      var url = "/api/api/post/?category__name="+cname;
+      var url = this.$API_HOST+"post/?category__name="+cname;
       this.$axios
         .get(url)
         .then(response => {

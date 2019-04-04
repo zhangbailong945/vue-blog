@@ -77,7 +77,7 @@ export default {
       }, 1000);
     },
     getTagList() {
-      var url = "/api/api/tags/";
+      var url = this.$API_HOST+"tags/";
       this.$axios
         .get(url)
         .then(response => {
